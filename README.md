@@ -1,4 +1,4 @@
-# Terraform module to provision an AWS ECR Registry
+# Terraform module to provision an AWS API Gateway REST API
 
 ## Prerequisites
 - Provision an S3 bucket to store Terraform State and DynamoDB for state-lock using https://github.com/jrdalino/aws-tfstate-backend-terraform
