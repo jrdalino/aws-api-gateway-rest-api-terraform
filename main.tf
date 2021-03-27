@@ -41,13 +41,6 @@ resource "aws_api_gateway_method" "this" {
   # request_parameters
 }
 
-resource "aws_api_gateway_method_response" "this" {
-  http_method = aws_api_gateway_method.this.http_method
-  resource_id = aws_api_gateway_resource.this.id
-  rest_api_id = aws_api_gateway_rest_api.this.id
-  status_code = "200"
-}
-
 # Integration
 resource "aws_api_gateway_integration" "this" {
   rest_api_id = aws_api_gateway_rest_api.this.id
@@ -80,11 +73,18 @@ EOF
   # tls_config
 }
 
-resource "aws_api_gateway_integration_response" "this" {
+resource "aws_api_gateway_method_response" "this" {
   http_method = aws_api_gateway_method.this.http_method
   resource_id = aws_api_gateway_resource.this.id
   rest_api_id = aws_api_gateway_rest_api.this.id
   status_code = "200"
+}
+
+resource "aws_api_gateway_integration_response" "this" {
+  http_method = aws_api_gateway_method.this.http_method
+  resource_id = aws_api_gateway_resource.this.id
+  rest_api_id = aws_api_gateway_rest_api.this.id
+  status_code = aws_api_gateway_method_response.this.status_code
 }
 
 # Deployment
@@ -94,10 +94,17 @@ resource "aws_api_gateway_deployment" "this" {
   # stage_name  = "prod"
   # stage_description = "prod" 
   # triggers
-
   lifecycle {
     create_before_destroy = true
   }
+  depends_on = [
+    aws_api_gateway_rest_api.this,
+    aws_api_gateway_resource.this,
+    aws_api_gateway_method.this,
+    aws_api_gateway_integration.this,
+    aws_api_gateway_method_response.this,
+    aws_api_gateway_integration_response.this,
+  ]  
 }
 
 # Stage
@@ -117,6 +124,14 @@ resource "aws_api_gateway_stage" "this" {
   # variables
   # tags
   # xray_tracing_enabled = true
+  depends_on = [
+    aws_api_gateway_rest_api.this,
+    aws_api_gateway_resource.this,
+    aws_api_gateway_method.this,
+    aws_api_gateway_integration.this,
+    aws_api_gateway_method_response.this,
+    aws_api_gateway_integration_response.this,
+  ]
 }
 
 # API Gateway Account Settings: aws_api_gateway_account
