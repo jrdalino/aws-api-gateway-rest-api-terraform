@@ -8,14 +8,14 @@ namespace       = "bbsdm"
 bounded_context = "shared"
 environment     = "production"
 
-# API Gateway
+# APIGW REST API
 aws_api_gateway_rest_api_name        = "bbsdm-api"
 aws_api_gateway_rest_api_description = "API for BBSDM"
 
-# Resource
-# Method
-# Integration
-# Deployment
+# APIGW Resource
+# APIGW Method
+# APIGW Integration
+# APIGW Deployment
 
-# Stage
+# APIGW Stage
 aws_api_gateway_stage_stage_name = "prod"

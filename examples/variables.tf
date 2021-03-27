@@ -30,7 +30,7 @@ variable "environment" {
   description = "Environment."
 }
 
-# API Gateway
+# APIGW REST API
 variable "aws_api_gateway_rest_api_name" {
   type        = string
   description = "(Required) The name of the REST API"
@@ -41,12 +41,12 @@ variable "aws_api_gateway_rest_api_description" {
   description = "(Optional) The description of the REST API"
 }
 
-# Resource
-# Method
-# Integration
-# Deployment
+# APIGW Resource
+# APIGW Method
+# APIGW Integration
+# APIGW Deployment
 
-# Stage
+# APIGW Stage
 variable "aws_api_gateway_stage_stage_name" {
   type        = string
   description = "Stage Name"

@@ -10,15 +10,15 @@ module "apigateway" {
   bounded_context = var.bounded_context
   environment     = var.environment
 
-  # API Gateway
+  # APIGW REST API
   aws_api_gateway_rest_api_name        = var.aws_api_gateway_rest_api_name
   aws_api_gateway_rest_api_description = var.aws_api_gateway_rest_api_description
 
-  # Resource
-  # Method
-  # Integration
-  # Deployment
+  # APIGW Resource
+  # APIGW Method
+  # APIGW Integration
+  # APIGW Deployment
 
-  # Stage
+  # APIGW Stage
   aws_api_gateway_stage_stage_name = var.aws_api_gateway_stage_stage_name
 }

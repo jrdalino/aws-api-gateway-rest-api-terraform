@@ -1,4 +1,4 @@
-# API Gateway
+# APIGW REST API
 resource "aws_api_gateway_rest_api" "this" {
   name        = var.aws_api_gateway_rest_api_name
   description = var.aws_api_gateway_rest_api_description
@@ -19,14 +19,14 @@ resource "aws_api_gateway_rest_api" "this" {
   }
 }
 
-# Resource
+# APIGW Resource
 resource "aws_api_gateway_resource" "this" {
   rest_api_id = aws_api_gateway_rest_api.this.id
   parent_id   = aws_api_gateway_rest_api.this.root_resource_id
   path_part   = "healthcheck"
 }
 
-# Method
+# APIGW Method
 resource "aws_api_gateway_method" "this" {
   rest_api_id   = aws_api_gateway_rest_api.this.id
   resource_id   = aws_api_gateway_resource.this.id
@@ -41,7 +41,7 @@ resource "aws_api_gateway_method" "this" {
   # request_parameters
 }
 
-# Integration
+# APIGW Integration
 resource "aws_api_gateway_integration" "this" {
   rest_api_id = aws_api_gateway_rest_api.this.id
   resource_id = aws_api_gateway_resource.this.id
@@ -87,7 +87,7 @@ resource "aws_api_gateway_integration_response" "this" {
   status_code = aws_api_gateway_method_response.this.status_code
 }
 
-# Deployment
+# APIGW Deployment
 resource "aws_api_gateway_deployment" "this" {
   rest_api_id = aws_api_gateway_rest_api.this.id
   # description
@@ -107,7 +107,7 @@ resource "aws_api_gateway_deployment" "this" {
   ]  
 }
 
-# Stage
+# APIGW Stage
 resource "aws_api_gateway_stage" "this" {
   rest_api_id   = aws_api_gateway_rest_api.this.id
   stage_name    = var.aws_api_gateway_stage_stage_name

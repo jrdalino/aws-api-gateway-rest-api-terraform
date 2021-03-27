@@ -1,4 +1,4 @@
-# API Gateway
+# APIGW REST API
 output "aws_api_gateway_rest_api_id" {
   value       = aws_api_gateway_rest_api.this.id
   description = "The ID of the REST API"
@@ -24,7 +24,7 @@ output "aws_api_gateway_rest_api_arn" {
   description = "Amazon Resource Name (ARN)"
 }
 
-# Resource
+# APIGW Resource
 output "aws_api_gateway_resource_id" {
   value       = aws_api_gateway_resource.this.id
   description = "The resource's identifier."
@@ -35,12 +35,12 @@ output "aws_api_gateway_resource_path" {
   description = "The complete path for this API resource, including all parent paths."
 }
 
-# Method: None Outputs
-# Method Response: No Outputs
-# Integration: No Outputs
-# Integration Response: No Ouputs
+# APIGW Method: None Outputs
+# APIGW Method Response: No Outputs
+# APIGW Integration: No Outputs
+# APIGW Integration Response: No Ouputs
 
-# Deployment
+# APIGW Deployment
 output "aws_api_gateway_deployment_id" {
   value       = aws_api_gateway_deployment.this.id
   description = "The ID of the deployment"
@@ -61,7 +61,7 @@ output "aws_api_gateway_deployment_created_date" {
   description = "The creation date of the deployment"
 }
 
-# Stage
+# APIGW Stage
 output "aws_api_gateway_stage_arn" {
   value       = aws_api_gateway_stage.this.arn
   description = "Amazon Resource Name (ARN)"
